@@ -8,6 +8,7 @@ subscriptions.
 
 Delta
 -----
+
 `:delta` accepts a single action, `&delta-action`. It accepts
 one of two marks, `%push` and `%pop`. `%push` takes a `@p` and
 a `@` noun, which will be added to a list of `@` in the target
@@ -16,6 +17,7 @@ ship.
 ```
 > :delta &delta-action [%push ~zod "ha"]
 ```
+
 `%pop` takes a `@p`. It will remove the head of the list containing
 the current agent state in the target ship.
 
