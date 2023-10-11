@@ -1,4 +1,4 @@
-::  Test the %delta app
+::  Test the %delta agent
 ::
 /+  *test
 /=  agent  /app/delta
@@ -9,9 +9,9 @@
 ++  bowl
   |=  run=@ud
   ^-  bowl:gall
-  :*  [~zod ~zod %delta]
+  :*  [~zod ~zod %hark-store]
     [~ ~]
-    [run `@uvJ`(shax run) *time [~zod %base ud+run]]
+    [run `@uvJ`(shax run) *time [~zod %delta ud+run]]
   ==
 ::
 ::  Build a structure arm to contain the mutable state,
@@ -34,6 +34,6 @@
       (~(on-poke agent (bowl run)) %delta-action !>([%push ~zod 30]))
   =+  !<(=state on-save:agent)
   %+  expect-eq
-    !>  [%0 values=~[~zod]]
+    !>  [%0 values=~[30]]
     !>  state
 --
