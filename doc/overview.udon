@@ -10,12 +10,19 @@ subscriptions.
 
 Delta
 -----
-`:delta` accepts a single poke, `&delta-action`. It accepts
-any atom, which is prepended to a list of `@` in its state. This is
-all `:delta` does.
+`:delta` accepts a single action, `&delta-action`. It accepts
+one of two marks, `%push` and `%pop`. `%push` takes a `@p` and
+a `@` noun, which will be added to a list of `@` in the target
+ship.
 
 ```
 > :delta &delta-action [%push ~zod "ha"]
+```
+`%pop` takes a `@p`. It will remove the head of the list containing
+the current agent state in the target ship.
+
+```
+> :delta &delta-action [%pop ~zod]
 ```
 
 Delta Follower
@@ -54,3 +61,14 @@ more logs will be seen.
 >=
 ```
 (Notice no logs are printed above the commands)
+
+Looking at the internal state
+-----------------------------
+
+The easiest way to check internal state of an agent is to simply
+run the `+dbug` generator with the agent as battery.
+
+```
+>   [%0 values=~[10.000 30.000]]
+> :delta +dbug
+```
