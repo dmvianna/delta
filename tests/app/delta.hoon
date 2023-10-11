@@ -27,7 +27,7 @@
 ::  the expected result at each step.
 ::
 |%
-++  test-delta
+++  test-push
  =|  run=@ud
   =^  move
       agent
@@ -35,5 +35,17 @@
   =+  !<(=state on-save:agent)
   %+  expect-eq
     !>  [%0 values=~[30]]
+    !>  state
+++  test-pop
+ =|  run=@ud
+  =^  move
+      agent
+      (~(on-poke agent (bowl run)) %delta-action !>([%push ~zod 30]))
+  =^  move
+      agent
+      (~(on-poke agent (bowl run)) %delta-action !>([%pop ~zod]))
+  =+  !<(=state on-save:agent)
+  %+  expect-eq
+    !>  [%0 values=~]
     !>  state
 --
