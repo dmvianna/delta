@@ -52,3 +52,14 @@ more logs will be seen.
 >=
 ```
 (Notice no logs are printed above the commands)
+
+Looking at the internal state
+-----------------------------
+
+The easiest way to check internal state of an agent is to simply
+run the `+dbug` generator with the agent as battery.
+
+```
+>   [%0 values=~[10.000 30.000]]
+> :delta +dbug
+```
